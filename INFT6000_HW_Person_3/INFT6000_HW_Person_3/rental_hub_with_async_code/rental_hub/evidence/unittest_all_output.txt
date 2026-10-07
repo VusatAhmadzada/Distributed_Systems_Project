@@ -1,0 +1,55 @@
+test_background_task_keeps_running_while_requests_wait (test_async_grpc.TestClientStaysResponsive.test_background_task_keeps_running_while_requests_wait) ... ok
+test_10_concurrent_searches_all_correct (test_async_grpc.TestConcurrency.test_10_concurrent_searches_all_correct) ... ok
+test_20_concurrent_rentals_last_copy_has_one_winner (test_async_grpc.TestConcurrency.test_20_concurrent_rentals_last_copy_has_one_winner) ... ok
+test_gathered_searches_overlap_in_time (test_async_grpc.TestConcurrentTiming.test_gathered_searches_overlap_in_time) ... ok
+test_short_timeout_gives_deadline_exceeded (test_async_grpc.TestDeadline.test_short_timeout_gives_deadline_exceeded) ... ok
+test_empty_student_id_fails (test_async_grpc.TestRentBook.test_empty_student_id_fails) ... ok
+test_out_of_stock_fails (test_async_grpc.TestRentBook.test_out_of_stock_fails) ... ok
+test_state_persists_between_calls (test_async_grpc.TestRentBook.test_state_persists_between_calls) ... ok
+test_successful_rental_reduces_stock (test_async_grpc.TestRentBook.test_successful_rental_reduces_stock) ... ok
+test_unknown_book_fails (test_async_grpc.TestRentBook.test_unknown_book_fails) ... ok
+test_list_active_rentals_all_and_per_student (test_async_grpc.TestRentalsAndReturn.test_list_active_rentals_all_and_per_student) ... ok
+test_return_book_restores_stock (test_async_grpc.TestRentalsAndReturn.test_return_book_restores_stock) ... ok
+test_return_unknown_rental_fails (test_async_grpc.TestRentalsAndReturn.test_return_unknown_rental_fails) ... ok
+test_check_stock_known_and_zero (test_async_grpc.TestSearchAndStock.test_check_stock_known_and_zero) ... ok
+test_check_stock_unknown_book (test_async_grpc.TestSearchAndStock.test_check_stock_unknown_book) ... ok
+test_empty_keyword_lists_all_books (test_async_grpc.TestSearchAndStock.test_empty_keyword_lists_all_books) ... ok
+test_no_match_returns_empty_list (test_async_grpc.TestSearchAndStock.test_no_match_returns_empty_list) ... ok
+test_search_is_case_insensitive (test_async_grpc.TestSearchAndStock.test_search_is_case_insensitive) ... ok
+test_add_and_find_book (test_rental_hub.TestBookCatalog.test_add_and_find_book) ... ok
+test_check_stock (test_rental_hub.TestBookCatalog.test_check_stock) ... ok
+test_decrease_stock_never_below_zero (test_rental_hub.TestBookCatalog.test_decrease_stock_never_below_zero) ... ok
+test_duplicate_id_rejected (test_rental_hub.TestBookCatalog.test_duplicate_id_rejected) ... ok
+test_returned_book_is_a_copy (test_rental_hub.TestBookCatalog.test_returned_book_is_a_copy) ... ok
+test_search_is_case_insensitive (test_rental_hub.TestBookCatalog.test_search_is_case_insensitive) ... ok
+test_active_rentals_are_stored (test_rental_hub.TestRentalManager.test_active_rentals_are_stored) ... ok
+test_empty_student_id_fails (test_rental_hub.TestRentalManager.test_empty_student_id_fails) ... ok
+test_last_copy_cannot_be_rented_twice (test_rental_hub.TestRentalManager.test_last_copy_cannot_be_rented_twice) ... ok
+test_missing_book_fails (test_rental_hub.TestRentalManager.test_missing_book_fails) ... ok
+test_out_of_stock_fails (test_rental_hub.TestRentalManager.test_out_of_stock_fails) ... ok
+test_return_book_restores_stock (test_rental_hub.TestRentalManager.test_return_book_restores_stock) ... ok
+test_successful_rental_reduces_stock (test_rental_hub.TestRentalManager.test_successful_rental_reduces_stock) ... ok
+test_call_succeeds_with_generous_deadline (test_sync_grpc.TestDelayAndDeadline.test_call_succeeds_with_generous_deadline) ... ok
+test_deadline_exceeded_when_server_is_slow (test_sync_grpc.TestDelayAndDeadline.test_deadline_exceeded_when_server_is_slow) ... ok
+test_server_down_gives_unavailable (test_sync_grpc.TestErrorHandling.test_server_down_gives_unavailable) ... ok
+test_empty_student_id_fails (test_sync_grpc.TestRentBook.test_empty_student_id_fails) ... ok
+test_last_copy_cannot_be_rented_twice (test_sync_grpc.TestRentBook.test_last_copy_cannot_be_rented_twice) ... ok
+test_missing_book_fails (test_sync_grpc.TestRentBook.test_missing_book_fails) ... ok
+test_out_of_stock_fails (test_sync_grpc.TestRentBook.test_out_of_stock_fails) ... ok
+test_parallel_clients_only_one_gets_last_copy (test_sync_grpc.TestRentBook.test_parallel_clients_only_one_gets_last_copy) ... ok
+test_state_persists_between_calls (test_sync_grpc.TestRentBook.test_state_persists_between_calls) ... ok
+test_successful_rental_reduces_stock (test_sync_grpc.TestRentBook.test_successful_rental_reduces_stock) ... ok
+test_active_rentals_are_stored (test_sync_grpc.TestRentalsAndReturn.test_active_rentals_are_stored) ... ok
+test_rental_fields (test_sync_grpc.TestRentalsAndReturn.test_rental_fields) ... ok
+test_return_book_restores_stock (test_sync_grpc.TestRentalsAndReturn.test_return_book_restores_stock) ... ok
+test_check_stock (test_sync_grpc.TestSearchAndStock.test_check_stock) ... ok
+test_check_stock_unknown_book (test_sync_grpc.TestSearchAndStock.test_check_stock_unknown_book) ... ok
+test_empty_keyword_lists_all_books (test_sync_grpc.TestSearchAndStock.test_empty_keyword_lists_all_books) ... ok
+test_search_is_case_insensitive (test_sync_grpc.TestSearchAndStock.test_search_is_case_insensitive) ... ok
+test_search_no_match_is_empty (test_sync_grpc.TestSearchAndStock.test_search_no_match_is_empty) ... ok
+test_search_returns_all_book_fields (test_sync_grpc.TestSearchAndStock.test_search_returns_all_book_fields) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 2.249s
+
+OK

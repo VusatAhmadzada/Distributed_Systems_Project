@@ -1,0 +1,54 @@
+@startuml class_diagram_async
+title Servers and OOP layer
+skinparam classAttributeIconSize 0
+
+abstract class RentalServiceServicer <<generated>> {
+  + RentBook(request, context)
+  + SearchBooks(request, context)
+  + CheckStock(request, context)
+  + ListActiveRentals(request, context)
+  + ReturnBook(request, context)
+}
+
+class RentalServicer {
+  + catalog : BookCatalog
+  + manager : RentalManager
+  + delay : float
+  - _simulate_delay()  : time.sleep
+}
+
+class AsyncRentalServicer {
+  + catalog : BookCatalog
+  + manager : RentalManager
+  + delay : float
+  + async RentBook(request, context)
+  + async SearchBooks(request, context)
+  + async CheckStock(request, context)
+  + async ListActiveRentals(request, context)
+  + async ReturnBook(request, context)
+  - async _simulate_delay()  : asyncio.sleep
+}
+
+class RentalManager {
+  - _catalog : BookCatalog
+  - _active_rentals : dict
+  - _lock : Lock
+  + rent_book(student_id, book_id)
+  + return_book(rental_id)
+  + get_active_rentals(student_id)
+}
+
+class BookCatalog {
+  - _books : dict
+  + search_books(keyword)
+  + list_books()
+  + check_stock(book_id)
+  + is_available(book_id)
+}
+
+RentalServiceServicer <|-- RentalServicer
+RentalServiceServicer <|-- AsyncRentalServicer
+RentalServicer "1" *-- "1" RentalManager
+AsyncRentalServicer "1" *-- "1" RentalManager
+RentalManager "0..*" o-- "1" BookCatalog : uses
+@enduml

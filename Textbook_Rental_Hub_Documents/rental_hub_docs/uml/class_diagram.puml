@@ -1,0 +1,52 @@
+@startuml class_diagram
+title University Textbook Rental Hub - Class Diagram
+skinparam classAttributeIconSize 0
+
+class Book <<dataclass>> {
+  + book_id : str
+  + title : str
+  + price : float
+  + stock : int
+}
+
+class Rental <<dataclass>> {
+  + rental_id : str
+  + student_id : str
+  + book_id : str
+  + price : float
+}
+
+class RentalResult <<dataclass>> {
+  + success : bool
+  + message : str
+  + rental_id : str
+  + remaining_stock : int
+}
+
+class BookCatalog {
+  - _books : dict[str, Book]
+  + add_book(book_id, title, price, stock)
+  + get_book(book_id) : Book | None
+  + list_books() : list[Book]
+  + search_books(keyword) : list[Book]
+  + check_stock(book_id) : int
+  + is_available(book_id) : bool
+  + decrease_stock(book_id, quantity=1) : bool
+  + increase_stock(book_id, quantity=1) : bool
+}
+
+class RentalManager {
+  - _catalog : BookCatalog
+  - _active_rentals : dict[str, Rental]
+  - _next_id : int
+  - _lock : Lock
+  + rent_book(student_id, book_id) : RentalResult
+  + return_book(rental_id) : RentalResult
+  + get_active_rentals(student_id=None) : list[Rental]
+}
+
+BookCatalog "1" *-right- "0..*" Book : stores
+RentalManager "0..*" o-- "1" BookCatalog : uses
+RentalManager "1" *-- "0..*" Rental : tracks
+RentalManager ..> RentalResult : <<creates>>
+@enduml

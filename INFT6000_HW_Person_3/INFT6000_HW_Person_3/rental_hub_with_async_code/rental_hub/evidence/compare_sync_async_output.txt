@@ -1,0 +1,19 @@
+
+Server delay per request: 0.5s   (sync server: 10 worker threads)
+
+Scenario                                                   Requests  Time (s)
+-----------------------------------------------------------------------------
+(a) sync stub, one after another                                 10      5.01
+(b) async stub, asyncio.gather                                   10      0.51
+
+Speed-up (a)/(b): 9.9x   (ideal: sequential ~ 5.0s, concurrent ~ 0.5s)
+
+(c) sync server, threaded clients (10 workers)                   50      2.52
+(d) async server, asyncio.gather (1 thread)                      50      0.51
+
+Speed-up (c)/(d): 4.9x
+
+Lock check: 10 concurrent RentBook calls for B003 (only 1 copy in stock)
+  sync server  (10 threads): 1 of 10 succeeded
+  async server (gather)    : 1 of 10 succeeded
+  RESULT: OK, exactly one winner on each server

@@ -1,0 +1,35 @@
+@startuml sequence_rent_book
+title rent_book(student_id, book_id) - Sequence Diagram
+
+actor Student
+participant ":RentalManager" as RM
+participant ":BookCatalog" as BC
+
+Student -> RM : rent_book("S1001", "B001")
+activate RM
+
+alt student_id is empty
+  RM --> Student : RentalResult(success=False, "Student ID is required")
+else student_id given
+  note over RM : the steps below run while _lock is held
+  RM -> BC : get_book("B001")
+  BC --> RM : copy of Book, or None
+  alt book is None
+    RM --> Student : RentalResult(success=False, "does not exist")
+  else book exists
+    RM -> BC : is_available("B001")
+    BC --> RM : True / False
+    alt not available
+      RM --> Student : RentalResult(success=False, "out of stock")
+    else available
+      RM -> BC : decrease_stock("B001")
+      BC --> RM : True
+      RM -> RM : create Rental R0001\nstore in _active_rentals
+      RM -> BC : check_stock("B001")
+      BC --> RM : 2
+      RM --> Student : RentalResult(success=True, rental_id="R0001", remaining_stock=2)
+    end
+  end
+end
+deactivate RM
+@enduml

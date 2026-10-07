@@ -1,0 +1,39 @@
+=== Demo 1: awaited calls, one after another ===
+1) Successful rental (S1001 rents B001):
+  [SUCCESS] 'Introduction to Algorithms' rented to S1001 (rental R0001, stock left 2)
+
+2) Out-of-stock book (B004):
+  [FAILED ] 'Database System Concepts' is out of stock
+
+3) Unknown book (B999):
+  [FAILED ] Book B999 does not exist
+
+4) Stock check:
+  B001: stock = 2
+  B999: stock = -1  (book does not exist)
+
+5) Active rentals (all students):
+  R0001: student S1001 has B001 (15.00 AZN)
+
+6) Return the book:
+  [SUCCESS] Rental R0001 returned (rental R0001, stock left 3)
+
+=== Demo 2: 10 concurrent searches with asyncio.gather ===
+  ... still working (tick 1)
+  ... still working (tick 2)
+  ... still working (tick 3)
+  ... still working (tick 4)
+  ... still working (tick 5)
+  [ 0.50s] student  1 searched 'algorithms' -> 1 book(s)
+  [ 0.50s] student  2 searched 'systems' -> 1 book(s)
+  [ 0.50s] student  3 searched 'database' -> 1 book(s)
+  [ 0.51s] student  4 searched 'networking' -> 1 book(s)
+  [ 0.51s] student  5 searched 'operating' -> 1 book(s)
+  [ 0.51s] student  6 searched 'concepts' -> 3 book(s)
+  [ 0.51s] student  7 searched 'introduction' -> 1 book(s)
+  [ 0.51s] student  8 searched 'computer' -> 1 book(s)
+  [ 0.51s] student  9 searched 'distributed' -> 1 book(s)
+  [ 0.51s] student 10 searched 'design' -> 1 book(s)
+  ... ticker stopped after 5 ticks
+
+  10/10 searches answered in 0.51s total

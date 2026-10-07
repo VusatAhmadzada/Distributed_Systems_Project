@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package rental;
+
+// Textbook Rental Hub - protocol contract (Person 2).
+// Field names mirror the Person 1 data classes (Book, Rental, RentalResult).
+
+service RentalService {
+  // Required blocking checkout call.
+  rpc RentBook(BookRequest) returns (RentalResponse);
+  // Used by Person 3 for the concurrent student searches.
+  rpc SearchBooks(SearchRequest) returns (SearchResponse);
+  rpc CheckStock(StockRequest) returns (StockResponse);
+  rpc ListActiveRentals(RentalsRequest) returns (RentalsResponse);
+  // Optional feature.
+  rpc ReturnBook(ReturnRequest) returns (RentalResponse);
+}
+
+// ---------- shared data messages ----------
+
+message Book {
+  string book_id = 1;   // e.g. "B001"
+  string title   = 2;
+  double price   = 3;   // AZN. Python float is a 64-bit double.
+  int32  stock   = 4;   // copies available right now
+}
+
+message Rental {
+  string rental_id  = 1;   // e.g. "R0001"
+  string student_id = 2;
+  string book_id    = 3;
+  double price      = 4;   // price at the moment of renting
+}
+
+// ---------- RentBook / ReturnBook ----------
+
+message BookRequest {
+  string student_id = 1;
+  string book_id    = 2;
+}
+
+message RentalResponse {
+  bool   success         = 1;
+  string message         = 2;
+  string rental_id       = 3;   // "" when the operation failed
+  int32  remaining_stock = 4;   // -1 = unknown book, as in Person 1
+}
+
+message ReturnRequest {
+  string rental_id = 1;
+}
+
+// ---------- SearchBooks ----------
+
+message SearchRequest {
+  string keyword = 1;   // empty keyword = list every book
+}
+
+message SearchResponse {
+  repeated Book books = 1;
+}
+
+// ---------- CheckStock ----------
+
+message StockRequest {
+  string book_id = 1;
+}
+
+message StockResponse {
+  string book_id = 1;
+  int32  stock   = 2;   // -1 when the book does not exist (as in Person 1)
+  bool   found   = 3;   // explicit flag: proto3 cannot tell 0 from "not set"
+}
+
+// ---------- ListActiveRentals ----------
+
+message RentalsRequest {
+  string student_id = 1;   // empty = all students
+}
+
+message RentalsResponse {
+  repeated Rental rentals = 1;
+}
