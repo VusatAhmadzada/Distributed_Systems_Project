@@ -15,7 +15,7 @@ def print_books(books):
 
 def print_result(result):
     status = "SUCCESS" if result.success else "FAILED "
-    extra = f" (rental {result.rental_id})" if result.rental_id else ""
+    extra = f" (rental {result.rental_id})" if result.rental_id and result.rental_id not in result.message else ""
     print(f"  [{status}] {result.message}{extra}")
 
 

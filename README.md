@@ -1,7 +1,5 @@
-# Distributed_Systems_Project
+# Distributed_Systems_HW 1
 # University Textbook Rental Hub (INFT 6000, Homework 1)
-
-Part 1 (OOP layer), Part 2 (Protocol Buffers + synchronous gRPC) and Part 3 (asynchronous gRPC with `grpc.aio`).
 
 ## Files
 
@@ -17,7 +15,7 @@ Part 1 (OOP layer), Part 2 (Protocol Buffers + synchronous gRPC) and Part 3 (asy
 | `compare_sync_async.py` | timing: same searches on the sync and the async server |
 | `test_async_grpc.py` | 18 end-to-end tests for the async server |
 | `evidence/` | saved output of the async demo, the timing script and all tests |
-| `uml/class_diagram_async.*` | UML class diagram of both servers (`.png`, `.dot`, `.puml`) |
+
 
 ## Setup
 

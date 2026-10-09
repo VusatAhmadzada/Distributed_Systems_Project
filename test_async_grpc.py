@@ -26,7 +26,7 @@ class AsyncGrpcTestCase(unittest.IsolatedAsyncioTestCase):
     DELAY = 0.0
 
     async def asyncSetUp(self):
-        # Fresh server (and fresh data) for every test; port 0 = any free port.
+        
         self.server, self.port = await create_server(port=0, delay=self.DELAY)
         await self.server.start()
         self.channel = grpc.aio.insecure_channel(f"localhost:{self.port}")
