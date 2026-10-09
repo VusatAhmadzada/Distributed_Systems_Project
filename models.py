@@ -32,5 +32,5 @@ class RentalResult:
     """The answer RentalManager gives back after a rental/return request."""
     success: bool            
     message: str             
-    rental_id: str = ""      #
+    rental_id: str = ""      
     remaining_stock: int = 0 
